@@ -1,0 +1,8 @@
+{
+  "name": "maynga",
+  "app_id": "1df3073c",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
