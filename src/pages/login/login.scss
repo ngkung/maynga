@@ -1,0 +1,20 @@
+page-login {
+  scroll-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  ion-item.item-ios {
+    padding-left: 0;
+  }
+
+  ion-grid {
+    padding: 0;
+    height: 100%;
+  }
+
+  ion-row {
+    flex: 1;
+  }
+
+}
