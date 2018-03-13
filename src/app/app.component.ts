@@ -3,7 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TranslateService } from '@ngx-translate/core';
-import {AuthService} from '../providers/auth-service/auth-service';
+import {AuthService} from 'src/providers/auth-service/auth-service';
 
 @Component({
   templateUrl: 'app.html'
