@@ -12,6 +12,7 @@ import {UserModel} from '../../models/user.model';
 export class ProfilePage extends ProtectedPage {
 
     public user: UserModel;
+    public message: any;
 
     constructor(
         public navCtrl: NavController,

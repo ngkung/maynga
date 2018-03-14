@@ -3,7 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TranslateService } from '@ngx-translate/core';
-import {AuthService} from '../providers/authService';
+import { AuthService } from '../providers/authService';
 
 @Component({
   templateUrl: 'app.html'
@@ -11,7 +11,7 @@ import {AuthService} from '../providers/authService';
 export class MyApp {
     @ViewChild(Nav) nav: Nav;
 
-    rootPage: any = 'ProfilePage';
+    rootPage: any = 'HomePage';
 
     pages: Array<{title: string, component: any, method?: any}>;
 
@@ -29,8 +29,8 @@ export class MyApp {
       // used for an example of ngFor and navigation
 
         this.pages = [
+            {title: 'page.home', component: 'HomePage'},
             {title: 'page.profile', component: 'ProfilePage'},
-            {title: 'page.books.list', component: 'BooksPage'},
             {title: 'page.logout', component: 'LoginPage', method: 'logout'}
         ];
 

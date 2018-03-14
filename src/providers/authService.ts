@@ -20,6 +20,7 @@ export class AuthService {
     private cfg: any;
     idToken: string;
     refreshSubscription: any;
+    message: any;
 
     constructor(
         private storage: Storage,

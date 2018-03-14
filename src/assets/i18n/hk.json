@@ -6,7 +6,8 @@
     "confirm_password" : "Confirm password",
     "title" : "Title",
     "author_name": "Author",
-    "pages": "Pages"
+    "pages": "Pages",
+    "message": "Message"
   },
   "button" : {
     "login" : "Login",
@@ -19,6 +20,7 @@
     "delete": "Delete"
   },
   "page" : {
+    "home" : "Home",
     "login" : "Login",
     "logout" : "Logout",
     "register" : "New registration",
@@ -30,5 +32,9 @@
       "edit" : "Edit book",
       "preview": "Preview"
     }
+  },
+  "homeItem": {
+    "notice": "Notice",
+    "urgent": "Urgent"
   }
 }

@@ -8,8 +8,6 @@ import { Storage } from '@ionic/storage';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {AuthService} from '../providers/authService';
@@ -32,8 +30,6 @@ export function getAuthHttp(http) {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    ListPage
   ],
   imports: [
     BrowserModule,
@@ -51,8 +47,6 @@ export function getAuthHttp(http) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    ListPage
   ],
   providers: [
     StatusBar,
