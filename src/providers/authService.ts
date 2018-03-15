@@ -7,6 +7,7 @@ import {JwtHelper, tokenNotExpired} from 'angular2-jwt';
 import * as AppConfig from '../app/config';
 import 'rxjs/add/operator/toPromise';
 import {Observable} from 'rxjs/Rx';
+import { AlertController } from "ionic-angular";
 
 /*
   Generated class for the AuthServiceProvider provider.
@@ -25,6 +26,7 @@ export class AuthService {
     constructor(
         private storage: Storage,
         private http: HttpClient,
+        private alertCtrl: AlertController,
         private jwtHelper:JwtHelper) {
 
         this.cfg = AppConfig.cfg;
@@ -55,6 +57,9 @@ export class AuthService {
             .toPromise()
             .then((data: any) => {
                 //let rs = data.json();
+                let alert = this.alertCtrl.create({title: 'Login', message: JSON.stringify(data), buttons: ['Dismiss']});
+                alert.present();
+
                 console.log(data);
                 this.saveData(data);
                 this.idToken = data.token;
