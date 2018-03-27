@@ -11,7 +11,7 @@ export let cfg = {
     laravelJWT: 'https://github.com/vmanchev/ionic3-seed-jwt'
 };
 export let oldcfg = {
-    apiUrl: 'http://books.prodio.bg/api',
+    apiUrl: 'http://maynga01.no-ip.org:8008',
     tokenName: 'token',
     user: {
         register: '/auth/signup',

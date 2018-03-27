@@ -53,7 +53,7 @@ export class AuthService {
 
     login(credentials: CredentialsModel) {
         console.log(credentials);
-        return this.http.post(this.cfg.apiUrl + this.cfg.user.login, JSON.stringify(credentials))
+        return this.http.post(this.cfg.apiUrl + this.cfg.user.login, JSON.stringify(credentials), { responseType: "json"})
             .toPromise()
             .then((data: any) => {
                 //let rs = data.json();
@@ -65,7 +65,11 @@ export class AuthService {
                 this.idToken = data.token;
                 this.scheduleRefresh();
             })
-            .catch(e => console.log('login error', e));
+            .catch(e => {
+                let alert = this.alertCtrl.create({title: 'Error', message: e.message, buttons: ['Dismiss']});
+                alert.present();
+                console.log('login error', JSON.stringify(e))
+            });
 
 
     }
@@ -148,7 +152,6 @@ export class AuthService {
     public startupTokenRefresh() {
         // If the user is authenticated, use the token stream
         // provided by angular2-jwt and flatMap the token
-
         this.storage.get("id_token").then((thetoken)=>{
 
             if(thetoken){
