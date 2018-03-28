@@ -15,3 +15,9 @@ insert_final_newline = true
 
 [*.md]
 trim_trailing_whitespace = false
+
+
+# git add .
+# git commit -m "message"
+# git push ionic master
+# git push origin master

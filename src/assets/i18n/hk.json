@@ -1,23 +1,23 @@
 {
   "label": {
-    "email": "Email address",
-    "password": "Password",
-    "name": "Name",
-    "confirm_password" : "Confirm password",
-    "title" : "Title",
-    "author_name": "Author",
-    "pages": "Pages",
-    "message": "Message"
+    "email": "電郵地址",
+    "password": "密碼",
+    "name": "姓名",
+    "confirm_password" : "確認密碼",
+    "title" : "稱謂",
+    "author_name": "作者",
+    "pages": "頁面",
+    "message": "訊息"
   },
   "button" : {
-    "login" : "Login",
-    "register" : "Register",
-    "new_registration" : "New registration",
-    "forgotten_password" : "Forgotten password?",
-    "submit" : "Submit",
+    "login" : "登入",
+    "register" : "登記",
+    "new_registration" : "首次登入",
+    "forgotten_password" : "忘記密碼嗎?",
+    "submit" : "遞交",
     "add_book": "Add new book",
-    "edit": "Edit",
-    "delete": "Delete"
+    "edit": "修改",
+    "delete": "刪除"
   },
   "page" : {
     "home" : "Home",
