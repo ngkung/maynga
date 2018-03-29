@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams, MenuController} from 'ionic-angular';
+import {Storage} from '@ionic/storage';
+import {Validators, FormBuilder, FormGroup} from '@angular/forms';
+import {AuthService} from "../../providers/authService";
+
 
 /**
  * Generated class for the RegisterPage page.
@@ -15,11 +19,36 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    private registerData: FormGroup;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
-  }
+    constructor(
+        public navCtrl: NavController,
+        public navParams: NavParams,
+        public menuCtrl: MenuController,
+        public storage: Storage,
+        public formBuilder: FormBuilder,
+        public authService: AuthService) {
+
+        this.registerData = this.formBuilder.group({
+            email: ['', Validators.compose([Validators.required])],
+        });
+
+    }
+
+    register() {
+        this.authService.forgot(this.registerData.value)
+            .then(() => this.redirectToHome())
+            .catch(e => console.log("forgot me error", e));
+    }
+
+    ionViewDidLoad() {
+        this.menuCtrl.enable(false);
+    }
+
+    redirectToHome() {
+        console.log("Redirecting");
+        this.navCtrl.setRoot('LoginPage');
+        this.menuCtrl.enable(false);
+    }
 
 }

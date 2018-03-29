@@ -29,7 +29,7 @@ export class ForgotPage {
         public authService: AuthService) {
 
         this.forgotData = this.formBuilder.group({
-            email: ['', Validators.required],
+            email: ['', Validators.compose([Validators.required])],
         });
 
     }

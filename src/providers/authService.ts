@@ -36,15 +36,17 @@ export class AuthService {
 
 }
 
-    register(userData: UserModel) {
+    register(myData: any) {
 
-        return this.http.post(this.cfg.apiUrl + this.cfg.user.register, userData)
+        return this.http.post(this.cfg.apiUrl + this.cfg.user.register, myData)
             .toPromise()
             .then((data: any) => {
                 //let rs = data.json();
+                /*
                 this.saveData(data);
                 this.idToken = data.token;
                 this.scheduleRefresh();
+                */
             })
             .catch(e => console.log("reg error", e));
 

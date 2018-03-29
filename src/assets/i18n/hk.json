@@ -7,7 +7,10 @@
     "title" : "稱謂",
     "author_name": "作者",
     "pages": "頁面",
-    "message": "訊息"
+    "message": "訊息",
+    "initLogin": "啟動帳號",
+    "initPassword": "啟動密碼",
+    "confirmPassword": "確認密碼"
   },
   "button" : {
     "login" : "登入",
@@ -23,7 +26,7 @@
     "home" : "Home",
     "login" : "Login",
     "logout" : "Logout",
-    "register" : "New registration",
+    "register" : "登記新用戶",
     "forgotten_password" : "Password recovery",
     "profile" : "Profile",
     "books" : {
