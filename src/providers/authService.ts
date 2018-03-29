@@ -209,6 +209,9 @@ export class AuthService {
                 console.info("there is no user logined ");
             }
 
+        }).catch( e => {
+            this.logout();
+            console.log(JSON.stringify(e));
         });
 
 
