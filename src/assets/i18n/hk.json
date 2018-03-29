@@ -15,7 +15,7 @@
   "button" : {
     "login" : "登入",
     "register" : "登記",
-    "new_registration" : "首次登入",
+    "new_registration" : "啟動帳號",
     "forgotten_password" : "忘記密碼嗎?",
     "submit" : "遞交",
     "add_book": "Add new book",
