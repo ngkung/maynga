@@ -43,6 +43,13 @@ export class HomePage {
     }
 
     ionViewDidLoad() {
+        this.storage.get('id_token').then(id_token => {
+            if (id_token === null) {
+                console.log("Home do it");
+                this.navCtrl.setRoot('LoginPage');
+                return false;
+            }
+        });
         this.menuCtrl.enable(true);
     }
 

@@ -31,6 +31,7 @@ export class LoginPage {
 
     ionViewDidLoad() {
         //hide menu when on the login page, regardless of the screen resolution
+        console.log("login page");
         this.menuCtrl.enable(false);
     }
 
@@ -41,7 +42,13 @@ export class LoginPage {
             .catch(e => console.log("login error", e));
     }
 
+    logout() {
+        console.log("calling from me logout");
+        //this.authService.logout();
+    }
+
     redirectToHome() {
+        console.log("Redirecting");
         this.navCtrl.setRoot('ProfilePage');
         this.menuCtrl.enable(true);
     }
@@ -52,6 +59,7 @@ export class LoginPage {
      * @param page string Page name
      */
     openPage(page: string) {
+        console.log("open from login");
         this.navCtrl.push(page);
     }
 }

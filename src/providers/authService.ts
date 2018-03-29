@@ -7,7 +7,7 @@ import {JwtHelper, tokenNotExpired} from 'angular2-jwt';
 import * as AppConfig from '../app/config';
 import 'rxjs/add/operator/toPromise';
 import {Observable} from 'rxjs/Rx';
-import { AlertController } from "ionic-angular";
+import {AlertController, NavController} from "ionic-angular";
 
 /*
   Generated class for the AuthServiceProvider provider.
@@ -74,6 +74,24 @@ export class AuthService {
 
     }
 
+    forgot(credentials: any) {
+        return this.http.post(this.cfg.apiUrl + this.cfg.user.forgot, JSON.stringify(credentials), { responseType: "json"})
+            .toPromise()
+            .then((data: any) => {
+                console.log(data);
+                /*
+                this.saveData(data);
+                this.idToken = data.token;
+                this.scheduleRefresh();
+                */
+            })
+            .catch(e => {
+                let alert = this.alertCtrl.create({title: 'Error', message: e.message, buttons: ['Dismiss']});
+                alert.present();
+                console.log('forgot error', JSON.stringify(e))
+            });
+    }
+
     saveData(data: any) {
 
         //let rs = data.json();
@@ -85,7 +103,9 @@ export class AuthService {
         // stop function of auto refesh
         this.unscheduleRefresh();
         this.storage.remove('user');
+        console.log("user removed!");
         this.storage.remove('id_token');
+        console.log("id_token removed!");
 
     }
 
@@ -165,7 +185,7 @@ export class AuthService {
                         let exp: Date = new Date(0);
                         exp.setUTCSeconds(jwtExp);
                         let delay: number = exp.valueOf() - now;
-                        console.log(jwtExp);
+                        console.log((exp.valueOf() - now) / 1000);
                         if(delay <= 0) {
                             delay=1;
                         }
@@ -185,7 +205,6 @@ export class AuthService {
             }else{
                 //there is no user logined
                 console.info("there is no user logined ");
-
             }
 
         });

@@ -5,6 +5,7 @@ export let cfg = {
         register: '/auth/signup',
         login: '/apilogin',
         refresh:'/apiRefreshToken',
+        forgot: '/apiForgot',
     },
     books: '/books',
     originalUrl: 'https://github.com/vmanchev/ionic3-seed-jwt',

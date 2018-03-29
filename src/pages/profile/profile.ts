@@ -29,7 +29,15 @@ export class ProfilePage extends ProtectedPage {
     }
 
     ionViewDidLoad() {
+        this.storage.get('id_token').then(id_token => {
+            if (id_token === null) {
+                console.log("Profile do it");
+                this.navCtrl.setRoot('LoginPage');
+                return false;
+            }
+        });
         this.menuCtrl.enable(true);
     }
+
 
 }

@@ -42,13 +42,16 @@ export class MyApp {
         // Here you can do any higher level native things you might need.
         this.statusBar.styleDefault();
         this.splashScreen.hide();
-        //this.authService.startupTokenRefresh();
+        this.authService.startupTokenRefresh();
       });
     }
 
     openPage(page) {
       // Reset the content nav to have just this page
       // we wouldn't want the back button to show in this scenario
+        if (page.method== 'logout') {
+            this.authService.logout();
+        }
       this.nav.setRoot(page.component);
     }
 }

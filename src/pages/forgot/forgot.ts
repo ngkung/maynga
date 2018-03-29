@@ -29,14 +29,25 @@ export class ForgotPage {
         public authService: AuthService) {
 
         this.forgotData = this.formBuilder.group({
-            egn: ['', Validators.compose([Validators.required, Validators.minLength(10), , Validators.maxLength(10)])],
             email: ['', Validators.required],
         });
 
     }
 
+    forgot() {
+        this.authService.forgot(this.forgotData.value)
+            .then(() => this.redirectToHome())
+            .catch(e => console.log("forgot me error", e));
+    }
+
   ionViewDidLoad() {
       this.menuCtrl.enable(false);
   }
+
+    redirectToHome() {
+        console.log("Redirecting");
+        this.navCtrl.setRoot('LoginPage');
+        this.menuCtrl.enable(false);
+    }
 
 }
