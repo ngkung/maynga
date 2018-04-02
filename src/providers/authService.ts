@@ -9,6 +9,7 @@ import 'rxjs/add/operator/toPromise';
 import {Observable} from 'rxjs/Rx';
 import {AlertController, NavController} from "ionic-angular";
 
+
 /*
   Generated class for the AuthServiceProvider provider.
 
@@ -33,8 +34,7 @@ export class AuthService {
         this.storage.get('id_token').then(token => {
             this.idToken = token;
         });
-
-}
+    }
 
     register(myData: any) {
 
@@ -61,7 +61,7 @@ export class AuthService {
                 //let rs = data.json();
                 let alert = this.alertCtrl.create({title: 'Login', message: JSON.stringify(data), buttons: ['Dismiss']});
                 alert.present();
-
+                console.log("URL: "+ this.cfg.apiUrl + this.cfg.user.login)
                 console.log(data);
                 this.saveData(data);
                 this.idToken = data.token;
@@ -218,7 +218,32 @@ export class AuthService {
     }
 
 
+    getLatestInfo(token) {
+        let headers = new Headers({'Content-Type': 'application/json'});
+        headers.append('Authorization','Bearer ' + token);
+        console.log(this.cfg.apiUrl + this.cfg.getInfo);
+        return this.http.post(this.cfg.apiUrl + "/api/service", "", { headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Bearer ' + token}})
+            .toPromise()
+            .then((data: any) => {
+                console.log(data);
 
+            })
+            .catch(e => {
+                console.log('getInfo error', JSON.stringify(e))
+            });
+    }
+
+    getToken() {
+        this.storage.get("id_token").then((thetoken)=>{
+            if(thetoken){
+                return thetoken;
+            } else {
+                return "Nothing"
+            }
+        }).catch(e => {
+            console.info("token error");
+        });
+    }
 
     public unscheduleRefresh() {
 // Unsubscribe fromt the refresh

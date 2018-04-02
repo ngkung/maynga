@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar class="home-header">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -7,9 +7,8 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="home-page">
   <ion-img src="assets/imgs/logo.png" class="home-logo"></ion-img>
-  <!--
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
       <ion-icon [name]="item.icon" item-start></ion-icon>
@@ -22,5 +21,4 @@
   <div *ngIf="selectedItem" padding>
     You navigated here from <b>{{selectedItem.title | translate}}</b>
   </div>
-  -->
 </ion-content>
