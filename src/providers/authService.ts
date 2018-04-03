@@ -1,13 +1,12 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import {UserModel} from "../models/user.model";
 import {CredentialsModel} from "../models/credentials.model";
 import {JwtHelper, tokenNotExpired} from 'angular2-jwt';
 import * as AppConfig from '../app/config';
 import 'rxjs/add/operator/toPromise';
 import {Observable} from 'rxjs/Rx';
-import {AlertController, NavController} from "ionic-angular";
+import {AlertController} from "ionic-angular";
 
 
 /*
@@ -35,6 +34,21 @@ export class AuthService {
             this.idToken = token;
         });
     }
+
+    public getToken(): string {
+        this.storage.get("id_token").then((thetoken)=>{
+            if(thetoken){
+                return thetoken;
+            } else {
+                return "Nothing";
+            }
+        }).catch(e => {
+            console.info("token error");
+            return null;
+        });
+        return;
+    }
+
 
     register(myData: any) {
 
@@ -219,11 +233,13 @@ export class AuthService {
 
 
     getLatestInfo(token) {
-        let headers = new Headers({'Content-Type': 'application/json'});
-        headers.append('Authorization','Bearer ' + token);
-        console.log(this.cfg.apiUrl + this.cfg.getInfo);
-        return this.http.post(this.cfg.apiUrl + "/api/service", "", { headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Bearer ' + token}})
-            .toPromise()
+        let headers = new HttpHeaders({
+            'Authorization': 'Bearer ' + token,
+        });
+        //'Authorization': 'Bearer ' + token,
+
+        //console.log(JSON.stringify(headers.get('Authorization')));
+        return this.http.post(this.cfg.apiUrl + "/api/getInfo",'',{ headers: new HttpHeaders().set('Authorization', 'Bearer ' + token) }).toPromise()
             .then((data: any) => {
                 console.log(data);
 
@@ -233,17 +249,6 @@ export class AuthService {
             });
     }
 
-    getToken() {
-        this.storage.get("id_token").then((thetoken)=>{
-            if(thetoken){
-                return thetoken;
-            } else {
-                return "Nothing"
-            }
-        }).catch(e => {
-            console.info("token error");
-        });
-    }
 
     public unscheduleRefresh() {
 // Unsubscribe fromt the refresh

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { HttpClientModule,HttpClient } from "@angular/common/http";
+import { HttpClientModule, HttpClient } from "@angular/common/http";
 import { AuthHttp, AuthConfig, JwtHelper } from 'angular2-jwt';
 import { IonicStorageModule } from '@ionic/storage';
 import { Storage } from '@ionic/storage';
@@ -58,7 +58,7 @@ export function getAuthHttp(http) {
           useFactory: getAuthHttp,
           deps: [HttpClient]
       },
-    AuthService,
+    AuthService
   ]
 })
 export class AppModule {}
