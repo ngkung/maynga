@@ -49,7 +49,7 @@ export class LoginPage {
 
     redirectToHome() {
         console.log("Redirecting");
-        this.navCtrl.setRoot('ProfilePage');
+        this.navCtrl.setRoot('HomePage');
         this.menuCtrl.enable(true);
     }
 

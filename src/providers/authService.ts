@@ -197,7 +197,8 @@ export class AuthService {
                         // Get the expiry time to generate
                         // a delay in milliseconds
                         let now: number = new Date().valueOf();
-                        let jwtExp: number = this.jwtHelper.decodeToken(token).exp;
+                        //let jwtExp: number = this.jwtHelper.decodeToken(token).exp;
+                        let jwtExp = this.checkToken(token);
                         let exp: Date = new Date(0);
                         exp.setUTCSeconds(jwtExp);
                         let delay: number = exp.valueOf() - now;
@@ -231,6 +232,16 @@ export class AuthService {
 
     }
 
+    checkToken(token) {
+        try {
+            let jwtExp: number = this.jwtHelper.decodeToken(token).exp;
+            return jwtExp;
+        } catch (e) {
+            this.logout();
+            console.log(JSON.stringify(e));
+        }
+    }
+
 
     getLatestInfo(token) {
 
@@ -240,6 +251,9 @@ export class AuthService {
 
             })
             .catch(e => {
+                let alert = this.alertCtrl.create({title: 'Error', message: e.message, buttons: ['Dismiss']});
+                alert.present();
+                this.logout();
                 console.log('getInfo error', JSON.stringify(e))
             });
     }

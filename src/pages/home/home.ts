@@ -52,7 +52,7 @@ export class HomePage {
                 this.navCtrl.setRoot('LoginPage');
                 return false;
             } else {
-                this.getLatestInfo(id_token);
+                //this.getLatestInfo(id_token);
             }
         });
         this.menuCtrl.enable(true);

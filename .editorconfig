@@ -23,3 +23,4 @@ trim_trailing_whitespace = false
 # git push origin master
 
 #cordova plugin remove cordova-plugin-ionic-webview
+# ionic cordova plugin rm cordova-plugin-WKWebView-engine

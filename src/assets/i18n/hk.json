@@ -23,12 +23,13 @@
     "delete": "刪除"
   },
   "page" : {
-    "home" : "美雅教育機構",
+    "homeTitle" : "美雅教育機構",
+    "home" : "主頁",
     "login" : "登入",
     "logout" : "登出",
     "register" : "登記新用戶",
     "forgotten_password" : "Password recovery",
-    "profile" : "Profile",
+    "profile" : "用戶檔案",
     "books" : {
       "list" : "My books",
       "add": "Add book",

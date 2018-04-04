@@ -22,6 +22,7 @@ export class MyApp {
         public splashScreen: SplashScreen,
         public authService: AuthService,
         translate: TranslateService) {
+
         this.initializeApp();
 
         translate.setDefaultLang('hk');
