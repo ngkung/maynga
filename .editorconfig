@@ -21,3 +21,5 @@ trim_trailing_whitespace = false
 # git commit -m "message"
 # git push ionic master
 # git push origin master
+
+#cordova plugin remove cordova-plugin-ionic-webview
