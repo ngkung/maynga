@@ -1,13 +1,12 @@
-import {HttpClient, HttpHeaders, HttpHeaders} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import {CredentialsModel} from "../models/credentials.model";
-import {JwtHelper, tokenNotExpired} from 'angular2-jwt';
+import {JwtHelperService} from "@auth0/angular-jwt";
 import * as AppConfig from '../app/config';
 import 'rxjs/add/operator/toPromise';
 import {Observable} from 'rxjs/Rx';
 import {AlertController} from "ionic-angular";
-
 
 /*
   Generated class for the AuthServiceProvider provider.
@@ -27,12 +26,13 @@ export class AuthService {
         private storage: Storage,
         private http: HttpClient,
         private alertCtrl: AlertController,
-        private jwtHelper:JwtHelper) {
+        private jwtHelper:JwtHelperService) {
 
         this.cfg = AppConfig.cfg;
         this.storage.get('id_token').then(token => {
             this.idToken = token;
         });
+
     }
 
     public getToken(): string {
@@ -126,7 +126,7 @@ export class AuthService {
     }
 
     isValid() {
-        return tokenNotExpired();
+        return this.jwtHelper.isTokenExpired(this.idToken);
     }
 
 
@@ -233,13 +233,8 @@ export class AuthService {
 
 
     getLatestInfo(token) {
-        let headers = new HttpHeaders({
-            'Authorization': 'Bearer ' + token,
-        });
-        //'Authorization': 'Bearer ' + token,
 
-        //console.log(JSON.stringify(headers.get('Authorization')));
-        return this.http.post(this.cfg.apiUrl + "/api/getInfo",'',{ headers: new HttpHeaders().set('Authorization', 'Bearer ' + token) }).toPromise()
+        return this.http.post(this.cfg.apiUrl + "/api/getNotice",{},{}).toPromise()
             .then((data: any) => {
                 console.log(data);
 
