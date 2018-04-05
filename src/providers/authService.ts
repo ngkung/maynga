@@ -35,7 +35,7 @@ export class AuthService {
 
     }
 
-    public getToken(): string {
+    public getToken(): Promise<string> {
         this.storage.get("id_token").then((thetoken)=>{
             if(thetoken){
                 return thetoken;
@@ -197,18 +197,24 @@ export class AuthService {
                         // Get the expiry time to generate
                         // a delay in milliseconds
                         let now: number = new Date().valueOf();
-                        //let jwtExp: number = this.jwtHelper.decodeToken(token).exp;
-                        let jwtExp = this.checkToken(token);
-                        let exp: Date = new Date(0);
-                        exp.setUTCSeconds(jwtExp);
-                        let delay: number = exp.valueOf() - now;
-                        console.log((exp.valueOf() - now) / 1000);
-                        if(delay <= 0) {
-                            delay=1;
+                        try {
+                            let jwtExp: number = this.jwtHelper.decodeToken(token).exp;
+                            //let jwtExp = this.checkToken(token);
+                            let exp: Date = new Date(0);
+                            exp.setUTCSeconds(jwtExp);
+                            let delay: number = exp.valueOf() - now;
+                            console.log((exp.valueOf() - now) / 1000);
+                            if(delay <= 0) {
+                                delay=1;
+                            }
+                            // Use the delay in a timer to
+                            // run the refresh at the proper time
+                            return Observable.timer(delay);
+                        } catch (e) {
+                            this.logout();
                         }
-                        // Use the delay in a timer to
-                        // run the refresh at the proper time
-                        return Observable.timer(delay);
+
+
                     });
 
                 // Once the delay time from above is
@@ -232,7 +238,7 @@ export class AuthService {
 
     }
 
-    checkToken(token) {
+    checkToken(token){
         try {
             let jwtExp: number = this.jwtHelper.decodeToken(token).exp;
             return jwtExp;
