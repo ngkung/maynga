@@ -112,6 +112,7 @@ export class AuthService {
 
         //let rs = data.json();
         this.storage.set("user", data.user);
+        this.storage.set("students", data.students);
         this.storage.set("id_token", data.token);
     }
 

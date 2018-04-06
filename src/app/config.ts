@@ -1,11 +1,12 @@
 export let cfg = {
     apiUrl: 'http://maynga01.no-ip.org:8008',
     tokenName: 'token',
+    photoPath: '/images/',
     user: {
         register: '/auth/signup',
         login: '/apilogin',
         refresh:'/apiRefreshToken',
-        forgot: '/apiForgot',
+        forgot: '/apiForgot'
     },
     books: '/books',
     originalUrl: 'https://github.com/vmanchev/ionic3-seed-jwt',

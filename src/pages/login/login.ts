@@ -23,10 +23,19 @@ export class LoginPage {
         public formBuilder: FormBuilder,
         public authService: AuthService) {
 
-        this.loginData = this.formBuilder.group({
-            email: ['', Validators.compose([Validators.required])],
-            password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+        this.storage.get('user').then(user => {
+            this.user = user;
         });
+
+
+            this.loginData = this.formBuilder.group({
+                email: ['', Validators.compose([Validators.required])],
+                password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+            });
+
+
+
+
     }
 
     ionViewDidLoad() {

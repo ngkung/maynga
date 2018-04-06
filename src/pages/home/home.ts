@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import {Storage} from '@ionic/storage';
-import {UserModel} from '../../models/user.model';
+import {StudentModel, UserModel} from '../../models/user.model';
 import {AuthService} from "../../providers/authService";
 
 @IonicPage()
@@ -12,6 +12,7 @@ import {AuthService} from "../../providers/authService";
 export class HomePage {
 
     public user: UserModel;
+    public students: Array<StudentModel>;
     public message: any;
     selectedItem: any;
     icons: string[];
@@ -34,6 +35,15 @@ export class HomePage {
             {title: 'homeItem.urgent', note: '', icon: 'warning'}
         ];
 
+        this.storage.get('students').then(students => {
+            this.students = students;
+            /*
+            Object.keys(students).forEach(key=>{
+                console.log(students[key]);
+            });
+            */
+            //console.log("Home students: "+JSON.stringify(students));
+        });
         /*
         for (let i = 1; i < 4; i++) {
             this.items.push({

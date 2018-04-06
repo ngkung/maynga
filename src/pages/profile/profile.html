@@ -15,7 +15,7 @@
   </ion-navbar>
 
 </ion-header>
-<ion-content>
+<ion-content padding class="home-page">
   <ion-card *ngIf="user">
     <ion-row>
       <ion-col col-25>{{ 'label.name' | translate }}:</ion-col>
@@ -26,6 +26,24 @@
       <ion-col col-75>{{ user.email }}</ion-col>
     </ion-row>
   </ion-card>
+  <ion-list>
+    <ion-card ion-item *ngFor="let student of students; let i = index" style="margin-top: 10px" no-lines>
+      <ion-row>
+        <div col-4>
+          <ion-img src="http://maynga01.no-ip.org:8008/images/{{ student.school }}/{{ student.photo }}" class="studentPhoto" style="height: 100%; width: 100%;background: #fff"></ion-img>
+        </div>
+        <div col-8>
+          <ion-row>
+            <ion-col col-12>{{ 'student.chiname' | translate }}: {{ student.chiname }}</ion-col>
+            <ion-col col-12>{{ 'student.name' | translate }}: {{ student.name }}</ion-col>
+            <ion-col col-12>{{ 'student.school' | translate }}: {{ student.school }}</ion-col>
+            <ion-col col-12>{{ 'student.cur_class' | translate }}: {{ student.cur_class }}</ion-col>
+          </ion-row>
+        </div>
+
+      </ion-row>
+    </ion-card>
+  </ion-list>
   <ion-card *ngIf="message">
     <ion-col col-25>{{ 'label.message' | translate }}:</ion-col>
     <ion-col col-75>{{ message }}</ion-col>

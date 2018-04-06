@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import {ProtectedPage} from "../protected/protected";
 import {Storage} from '@ionic/storage';
-import {UserModel} from '../../models/user.model';
+import {StudentModel, UserModel} from '../../models/user.model';
 
 @IonicPage()
 @Component({
@@ -12,6 +12,7 @@ import {UserModel} from '../../models/user.model';
 export class ProfilePage extends ProtectedPage {
 
     public user: UserModel;
+    public students: Array<StudentModel>;
     public message: any;
 
     constructor(
@@ -25,7 +26,15 @@ export class ProfilePage extends ProtectedPage {
         this.storage.get('user').then(user => {
             this.user = user;
         });
-
+        this.storage.get('students').then(students => {
+            this.students = students;
+            /*
+            Object.keys(students).forEach(key=>{
+                console.log(students[key]);
+            });
+            */
+            //console.log("Home students: "+JSON.stringify(students));
+        });
     }
 
     ionViewDidLoad() {
