@@ -265,6 +265,25 @@ export class AuthService {
             });
     }
 
+    getRecords(id: number) {
+
+        let info = {};
+        info["id"] = id;
+
+        return this.http.post(this.cfg.apiUrl + "/api/getStudentRecords",JSON.stringify(info),{}).toPromise()
+            .then((data: any) => {
+                let alert = this.alertCtrl.create({title: 'Good la', message: " welcome ", buttons: ['Dismiss']});
+                alert.present();
+                console.log(data);
+
+            })
+            .catch(e => {
+                let alert = this.alertCtrl.create({title: 'Error', message: e.message, buttons: ['Dismiss']});
+                alert.present();
+                console.log('get record error', JSON.stringify(e))
+            });
+    }
+
 
     public unscheduleRefresh() {
 // Unsubscribe fromt the refresh

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angul
 import {ProtectedPage} from "../protected/protected";
 import {Storage} from '@ionic/storage';
 import {StudentModel, UserModel} from '../../models/user.model';
+import {AuthService} from "../../providers/authService";
 
 @IonicPage()
 @Component({
@@ -19,7 +20,8 @@ export class ProfilePage extends ProtectedPage {
         public navCtrl: NavController,
         public navParams: NavParams,
         public menuCtrl: MenuController,
-        public storage: Storage) {
+        public storage: Storage,
+        public authService: AuthService) {
 
         super(navCtrl, navParams, storage);
 
@@ -43,9 +45,21 @@ export class ProfilePage extends ProtectedPage {
                 console.log("Profile do it");
                 this.navCtrl.setRoot('LoginPage');
                 return false;
+            } else {
+                this.getRecords(1);
             }
         });
         this.menuCtrl.enable(true);
+    }
+
+    getRecords(id: number) {
+        this.authService.getRecords(id)
+            .then(() => this.sayHi())
+            .catch(e => console.log("get profile records error", e));
+    }
+
+    sayHi() {
+        console.log("saying hi");
     }
 
 
