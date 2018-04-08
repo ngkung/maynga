@@ -49,5 +49,8 @@
   "homeItem": {
     "notice": "Notice",
     "urgent": "Urgent"
+  },
+  "SchoolRecord": {
+    "Arrival": "到校"
   }
 }

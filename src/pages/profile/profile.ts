@@ -4,6 +4,7 @@ import {ProtectedPage} from "../protected/protected";
 import {Storage} from '@ionic/storage';
 import {StudentModel, UserModel} from '../../models/user.model';
 import {AuthService} from "../../providers/authService";
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
 @Component({
@@ -21,7 +22,8 @@ export class ProfilePage extends ProtectedPage {
         public navParams: NavParams,
         public menuCtrl: MenuController,
         public storage: Storage,
-        public authService: AuthService) {
+        public authService: AuthService,
+        public translate: TranslateService) {
 
         super(navCtrl, navParams, storage);
 
@@ -46,7 +48,7 @@ export class ProfilePage extends ProtectedPage {
                 this.navCtrl.setRoot('LoginPage');
                 return false;
             } else {
-                this.getRecords(1);
+                //this.getRecords(10);
             }
         });
         this.menuCtrl.enable(true);
@@ -54,12 +56,18 @@ export class ProfilePage extends ProtectedPage {
 
     getRecords(id: number) {
         this.authService.getRecords(id)
-            .then(() => this.sayHi())
+            .then((data) => this.sayHi(data))
             .catch(e => console.log("get profile records error", e));
     }
 
-    sayHi() {
-        console.log("saying hi");
+    sayHi(data) {
+
+        //console.log(data);
+    }
+
+    openPage(page: string) {
+        console.log("open from login");
+        this.navCtrl.push(page);
     }
 
 

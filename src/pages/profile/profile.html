@@ -38,6 +38,7 @@
             <ion-col col-12>{{ 'student.name' | translate }}: {{ student.name }}</ion-col>
             <ion-col col-12>{{ 'student.school' | translate }}: {{ student.school }}</ion-col>
             <ion-col col-12>{{ 'student.cur_class' | translate }}: {{ student.cur_class }}</ion-col>
+            <button ion-button (click)="getRecords(student.id)">View Records</button>
           </ion-row>
         </div>
 

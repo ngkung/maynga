@@ -272,9 +272,12 @@ export class AuthService {
 
         return this.http.post(this.cfg.apiUrl + "/api/getStudentRecords",JSON.stringify(info),{}).toPromise()
             .then((data: any) => {
-                let alert = this.alertCtrl.create({title: 'Good la', message: " welcome ", buttons: ['Dismiss']});
-                alert.present();
-                console.log(data);
+                //let alert = this.alertCtrl.create({title: 'Good la', message: " welcome ", buttons: ['Dismiss']});
+                //alert.present();
+
+                //console.log(JSON.parse(data.schoolRecords));
+
+                return JSON.parse(data.schoolRecords);
 
             })
             .catch(e => {
