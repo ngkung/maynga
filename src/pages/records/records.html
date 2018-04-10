@@ -48,7 +48,15 @@
                     hasMargin="false"
                     headerColor="#a32e6a"
     >
-
+        <ion-list>
+            <button ion-item *ngFor="let record of bookRecords">
+                <ion-row style="background: rgba(163,46,106,0.3);margin-bottom: 10px;">
+                    <ion-col col-4>{{ 'BookRecord.bookname' | translate }}:</ion-col><ion-col col-8>{{ record.bookname }}</ion-col>
+                    <ion-col col-4>{{ 'BookRecord.dateofborrow' | translate }}:</ion-col><ion-col col-8>{{ record.dateofborrow }}</ion-col>
+                    <ion-col col-4>{{ 'BookRecord.dateofreturn' | translate }}:</ion-col><ion-col col-8>{{ record.dateofreturn }}</ion-col>
+                </ion-row>
+            </button>
+        </ion-list>
 
     </accordion-list>
 

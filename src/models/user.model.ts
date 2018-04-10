@@ -33,4 +33,6 @@ export class BookRecordModel {
   public dateofborrow: string;
   public dateofreturn: string;
   public dateoftraget: string;
+  public bookname: string;
+  public bookimage: string;
 }

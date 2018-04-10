@@ -64,5 +64,12 @@
     "main": "正校",
     "branch": "分校",
     "nursery": "幼兒園"
+  },
+  "BookRecord": {
+    "bookname": "書本名稱",
+    "dateofborrow": "借書日期",
+    "dateofreturn": "還書日期"
+
   }
+
 }

@@ -19,6 +19,7 @@ export class RecordsPage {
   student: StudentModel;
   schoolRecords: Array<SchoolRecordModel>;
   bookRecords: Array<BookRecordModel>;
+  bookRecord: BookRecordModel;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthService) {
 
@@ -43,8 +44,16 @@ export class RecordsPage {
 
     handleRecords(data) {
         this.schoolRecords = JSON.parse(data.schoolRecords);
-        this.bookRecords = JSON.parse(data.bookRecords);
-        console.log(data.bookRecords);
+        this.bookRecords = [];
+        let tmp = JSON.parse(data.bookRecords);
+        for (let key in tmp) {
+            this.bookRecord = tmp[key][0];
+            this.bookRecord.bookname = tmp[key].bookname;
+            this.bookRecord.bookimage = tmp[key].bookimage;
+            this.bookRecords.push(this.bookRecord);
+        }
+        //console.log(tmp);
+        console.log(this.bookRecords);
     }
 
 }
