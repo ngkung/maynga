@@ -11,6 +11,7 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {AuthService} from '../providers/authService';
+import {ComponentsModule} from "../components/components.module";
 
 let storage = new Storage({});
 
@@ -55,7 +56,8 @@ export function getAuthHttp(http) {
               blacklistedRoutes: ['maynga01.no-ip.org:8008/apilogin'],
               headerName: 'Authorization',
           }
-      })
+      }),
+      ComponentsModule
 
   ],
   bootstrap: [IonicApp],
@@ -67,7 +69,9 @@ export function getAuthHttp(http) {
     SplashScreen,
       JwtHelperService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthService
+    AuthService,
+      ComponentsModule
+
   ]
 })
 export class AppModule {}

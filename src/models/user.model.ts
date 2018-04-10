@@ -15,3 +15,22 @@ export class StudentModel {
   public status: string;
   public cur_class: string;
 }
+export class SchoolRecordModel {
+  public id: number;
+  public reasontoleave: string;
+  public rfid: number;
+  public school: string;
+  public studentId: number;
+  public timeofrecord: string;
+  public typeofrecord: string;
+}
+export class BookRecordModel {
+  public id: number;
+  public rfid: number;
+  public school: string;
+  public bookId: number;
+  public studentId: number;
+  public dateofborrow: string;
+  public dateofreturn: string;
+  public dateoftraget: string;
+}

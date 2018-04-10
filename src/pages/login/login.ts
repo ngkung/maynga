@@ -33,9 +33,6 @@ export class LoginPage {
                 password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
             });
 
-
-
-
     }
 
     ionViewDidLoad() {

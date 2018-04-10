@@ -7,6 +7,7 @@ import * as AppConfig from '../app/config';
 import 'rxjs/add/operator/toPromise';
 import {Observable} from 'rxjs/Rx';
 import {AlertController} from "ionic-angular";
+import { Events } from 'ionic-angular';
 
 /*
   Generated class for the AuthServiceProvider provider.
@@ -23,6 +24,7 @@ export class AuthService {
     message: any;
 
     constructor(
+        public events: Events,
         private storage: Storage,
         private http: HttpClient,
         private alertCtrl: AlertController,
@@ -73,8 +75,10 @@ export class AuthService {
             .toPromise()
             .then((data: any) => {
                 //let rs = data.json();
+                /*
                 let alert = this.alertCtrl.create({title: 'Login', message: JSON.stringify(data), buttons: ['Dismiss']});
                 alert.present();
+                */
                 console.log("URL: "+ this.cfg.apiUrl + this.cfg.user.login)
                 console.log(data);
                 this.saveData(data);
@@ -123,6 +127,7 @@ export class AuthService {
         console.log("user removed!");
         this.storage.remove('id_token');
         console.log("id_token removed!");
+        this.events.publish("id_token_removed!");
 
     }
 
@@ -276,8 +281,9 @@ export class AuthService {
                 //alert.present();
 
                 //console.log(JSON.parse(data.schoolRecords));
-
-                return JSON.parse(data.schoolRecords);
+                //console.log(JSON.parse(data.bookRecords));
+                //return JSON.parse(data.schoolRecords);
+                return data;
 
             })
             .catch(e => {

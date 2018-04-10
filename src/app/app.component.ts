@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../providers/authService';
+import { Events } from 'ionic-angular';
 
 @Component({
   templateUrl: 'app.html'
@@ -17,6 +18,7 @@ export class MyApp {
 
 
     constructor(
+        public events: Events,
         public platform: Platform,
         public statusBar: StatusBar,
         public splashScreen: SplashScreen,
@@ -34,6 +36,10 @@ export class MyApp {
             {title: 'page.profile', component: 'ProfilePage'},
             {title: 'page.logout', component: 'LoginPage', method: 'logout'}
         ];
+
+        events.subscribe('id_token_removed!', () => {
+           this.nav.setRoot('LoginPage');
+        });
 
     }
 

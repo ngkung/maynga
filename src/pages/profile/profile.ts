@@ -65,9 +65,17 @@ export class ProfilePage extends ProtectedPage {
         //console.log(data);
     }
 
-    openPage(page: string) {
-        console.log("open from login");
-        this.navCtrl.push(page);
+    openPage(page: string, id: number) {
+        console.log("open from profile");
+        let students = this.students;
+        let student = null;
+        for (var key in students) {
+            if (students[key].id == id) {
+                student = students[key];
+                console.log("I found the student." + JSON.stringify(student));
+            }
+        }
+        this.navCtrl.push(page, {student: JSON.stringify(student)});
     }
 
 

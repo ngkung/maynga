@@ -19,7 +19,8 @@
     "photo": "照片",
     "id": "系統編號",
     "status": "狀況",
-    "cur_class": "班別"
+    "cur_class": "班別",
+    "viewrecord": "檢視學生檔案"
   },
   "button" : {
     "login" : "登入",
@@ -39,6 +40,7 @@
     "register" : "登記新用戶",
     "forgotten_password" : "Password recovery",
     "profile" : "用戶檔案",
+    "record": "檢視學生檔案",
     "books" : {
       "list" : "My books",
       "add": "Add book",
@@ -51,6 +53,16 @@
     "urgent": "Urgent"
   },
   "SchoolRecord": {
-    "Arrival": "到校"
+    "SchoolRecord": "上學記錄(最近十次)",
+    "Arrival": "到校",
+    "EarlyLeave": "早退",
+    "Family": "家事缺課",
+    "Sick": "因病缺課",
+    "Unknown": "不確定"
+  },
+  "Schools": {
+    "main": "正校",
+    "branch": "分校",
+    "nursery": "幼兒園"
   }
 }

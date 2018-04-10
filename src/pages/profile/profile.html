@@ -30,15 +30,15 @@
     <ion-card ion-item *ngFor="let student of students; let i = index" style="margin-top: 10px" no-lines>
       <ion-row>
         <div col-4>
-          <ion-img src="http://maynga01.no-ip.org:8008/images/{{ student.school }}/{{ student.photo }}" class="studentPhoto" style="height: 100%; width: 100%;background: #fff"></ion-img>
+          <ion-img src="http://maynga01.no-ip.org:8008/images/{{ student.school }}/{{ student.photo }}" class="studentPhoto" style="height: 100%; width: 100%; max-height: 170px; max-width: 120px; background: #fff"></ion-img>
         </div>
         <div col-8>
           <ion-row>
             <ion-col col-12>{{ 'student.chiname' | translate }}: {{ student.chiname }}</ion-col>
             <ion-col col-12>{{ 'student.name' | translate }}: {{ student.name }}</ion-col>
-            <ion-col col-12>{{ 'student.school' | translate }}: {{ student.school }}</ion-col>
+            <ion-col col-12>{{ 'student.school' | translate }}: {{ 'Schools.'+student.school | translate }}</ion-col>
             <ion-col col-12>{{ 'student.cur_class' | translate }}: {{ student.cur_class }}</ion-col>
-            <button ion-button (click)="getRecords(student.id)">View Records</button>
+            <button ion-button (click)="openPage('RecordsPage',student.id)">{{ 'student.viewrecord' | translate }}</button>
           </ion-row>
         </div>
 

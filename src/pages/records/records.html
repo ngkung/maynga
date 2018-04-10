@@ -5,14 +5,53 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>records</ion-title>
+  <ion-navbar class="home-header">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'page.record' | translate }}</ion-title>
   </ion-navbar>
-
 </ion-header>
 
+<ion-content padding class="home-page">
+    <ion-row  style="background: #fff; margin-bottom: 15px;">
+      <div col-4>
+        <ion-img src="http://maynga01.no-ip.org:8008/images/{{ student.school }}/{{ student.photo }}" class="studentPhoto" style="height: 100%; width: 100%; max-height: 170px; max-width: 120px; background: #fff"></ion-img>
+      </div>
+      <div col-8>
+        <ion-row>
+          <ion-col col-12>{{ 'student.chiname' | translate }}: {{ student.chiname }}</ion-col>
+          <ion-col col-12>{{ 'student.name' | translate }}: {{ student.name }}</ion-col>
+          <ion-col col-12>{{ 'student.school' | translate }}: {{ 'Schools.'+student.school | translate }}</ion-col>
+          <ion-col col-12>{{ 'student.cur_class' | translate }}: {{ student.cur_class }}</ion-col>
+        </ion-row>
+      </div>
 
-<ion-content padding>
+    </ion-row>
+    <accordion-list title="{{ 'SchoolRecord.SchoolRecord' | translate }}"
+                    textColor="#FFF"
+                    hasMargin="false"
+                    headerColor="#a32e6a"
+    >
+      <ion-list>
+        <button ion-item *ngFor="let record of schoolRecords">
+          <ion-row style="background: rgba(163,46,106,0.3);">
+            <ion-col col-6>{{ 'SchoolRecord.'+record.typeofrecord | translate }}</ion-col>
+            <ion-col col-6>{{ record.timeofrecord }}</ion-col>
+          </ion-row>
+        </button>
+      </ion-list>
+
+    </accordion-list>
+    <accordion-list title="借書記錄"
+                    textColor="#FFF"
+                    hasMargin="false"
+                    headerColor="#a32e6a"
+    >
+
+
+    </accordion-list>
+
+
 
 </ion-content>
