@@ -28,6 +28,9 @@ export class RecordsPage {
         this.student = JSON.parse(data);
         this.getRecords(this.student.id);
         console.log(this.student.id);
+    } else {
+        this.student = new StudentModel();
+        this.student.school = "main";
     }
 
   }

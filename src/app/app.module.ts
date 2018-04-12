@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {AuthService} from '../providers/authService';
 import {ComponentsModule} from "../components/components.module";
+import { FCM } from '@ionic-native/fcm';
 
 let storage = new Storage({});
 
@@ -57,7 +58,7 @@ export function getAuthHttp(http) {
               headerName: 'Authorization',
           }
       }),
-      ComponentsModule
+      ComponentsModule,
 
   ],
   bootstrap: [IonicApp],
@@ -70,8 +71,8 @@ export function getAuthHttp(http) {
       JwtHelperService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
-      ComponentsModule
-
+      ComponentsModule,
+      FCM
   ]
 })
 export class AppModule {}

@@ -49,11 +49,18 @@
                     headerColor="#a32e6a"
     >
         <ion-list>
-            <button ion-item *ngFor="let record of bookRecords">
+            <div *ngIf="bookRecords?.length <= 0">
+                <ion-row style="background: rgba(163,46,106,0.3);margin-bottom: 10px;">
+                    <ion-col col-12>沒有記錄</ion-col>
+                </ion-row>
+            </div>
+            <button ion-item *ngFor="let record of bookRecords; let i = index">
+
                 <ion-row style="background: rgba(163,46,106,0.3);margin-bottom: 10px;">
                     <ion-col col-4>{{ 'BookRecord.bookname' | translate }}:</ion-col><ion-col col-8>{{ record.bookname }}</ion-col>
                     <ion-col col-4>{{ 'BookRecord.dateofborrow' | translate }}:</ion-col><ion-col col-8>{{ record.dateofborrow }}</ion-col>
                     <ion-col col-4>{{ 'BookRecord.dateofreturn' | translate }}:</ion-col><ion-col col-8>{{ record.dateofreturn }}</ion-col>
+                    <ion-col col-4>{{ 'BookRecord.systemId' | translate }}:</ion-col><ion-col col-8>{{ "#"+(i+1) + "." + record.rfid }}</ion-col>
                 </ion-row>
             </button>
         </ion-list>

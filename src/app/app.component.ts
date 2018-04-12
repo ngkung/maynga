@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../providers/authService';
 import { Events } from 'ionic-angular';
+import { FCM } from '@ionic-native/fcm';
 
 @Component({
   templateUrl: 'app.html'
@@ -23,6 +24,7 @@ export class MyApp {
         public statusBar: StatusBar,
         public splashScreen: SplashScreen,
         public authService: AuthService,
+        public fcm: FCM,
         translate: TranslateService) {
 
         this.initializeApp();
@@ -47,10 +49,45 @@ export class MyApp {
       this.platform.ready().then(() => {
         // Okay, so the platform is ready and our plugins are available.
         // Here you can do any higher level native things you might need.
+
+          this.fcm.subscribeToTopic('marketing');
+          /*
+          //https://javebratt.com/ionic-push-notification/
+          //https://ionicframework.com/docs/native/fcm/
+          //https://cordova-plugin-fcm.appspot.com/
+
+          this.fcm.getToken().then(token => {
+              //backend.registerToken(token);
+          });
+
+          this.fcm.onNotification().subscribe(data => {
+              if(data.wasTapped){
+                console.log("Received in background");
+                //Notification was received on device tray and tapped by the user.
+                    console.log(JSON.stringify(data));
+                 this.nav.setRoot('DetailPage', { profileId: data.profileId });
+              } else {
+                console.log("Received in foreground");
+                //Notification was received in foreground. Maybe the user needs to be notified.
+                console.log(JSON.stringify(data));
+                this.nav.push('DetailPage', { profileId: data.profileId });
+              };
+            });
+
+            this.fcm.onTokenRefresh().subscribe(token => {
+              backend.registerToken(token);
+            });
+
+        this.fcm.unsubscribeFromTopic('marketing');
+          */
         this.statusBar.styleDefault();
         this.splashScreen.hide();
         this.authService.startupTokenRefresh();
+
+
+
       });
+
     }
 
     openPage(page) {
@@ -61,4 +98,10 @@ export class MyApp {
         }
       this.nav.setRoot(page.component);
     }
+
+
+
+
+
+
 }

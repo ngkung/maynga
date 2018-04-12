@@ -66,9 +66,11 @@
     "nursery": "幼兒園"
   },
   "BookRecord": {
+    "BookRecord": "借書記錄(本年度)",
     "bookname": "書本名稱",
     "dateofborrow": "借書日期",
-    "dateofreturn": "還書日期"
+    "dateofreturn": "還書日期",
+    "systemId": "系統編號"
 
   }
 
