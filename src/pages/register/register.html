@@ -17,24 +17,28 @@
       <ion-col col-sm-6 col-md-6 col-lg-4 col-xl-3  align-self-center>
         <form [formGroup]="registerData" (ngSubmit)="register()">
           <ion-item>
-            <ion-label floating>{{ 'label.initLogin' | translate }}:</ion-label>
-            <ion-input type="text" formControlName="initLogin"></ion-input>
+            <ion-label>{{ 'label.initLogin' | translate }}:</ion-label>
+            <ion-input type="text" formControlName="initLogin" placeholder="{{ 'form.initLogin' | translate }}"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label floating>{{ 'label.initPassword' | translate }}:</ion-label>
-            <ion-input type="password" formControlName="initPassword"></ion-input>
+            <ion-label>{{ 'label.initPassword' | translate }}:</ion-label>
+            <ion-input type="password" formControlName="initPassword" placeholder="{{ 'form.initPassword' | translate }}"></ion-input>
           </ion-item>
           <ion-item>
-          <ion-label floating>{{ 'label.email' | translate }}:</ion-label>
-          <ion-input type="email" formControlName="email"></ion-input>
-        </ion-item>
-          <ion-item>
-          <ion-label floating>{{ 'label.password' | translate }}:</ion-label>
-          <ion-input type="password" formControlName="password"></ion-input>
+          <ion-label>{{ 'label.email' | translate }}:</ion-label>
+          <ion-input type="email" formControlName="email" placeholder="{{ 'form.email' | translate }}"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label floating>{{ 'label.confirmPassword' | translate }}:</ion-label>
-            <ion-input type="password" formControlName="confirmPassword"></ion-input>
+            <ion-label>{{ 'label.name' | translate }}:</ion-label>
+            <ion-input type="text" formControlName="name" placeholder="{{ 'form.name' | translate }}"></ion-input>
+          </ion-item>
+          <ion-item>
+          <ion-label>{{ 'label.password' | translate }}:</ion-label>
+          <ion-input type="password" formControlName="password" placeholder="{{ 'form.password' | translate }}"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>{{ 'label.confirmPassword' | translate }}:</ion-label>
+            <ion-input type="password" formControlName="confirmPassword" placeholder="{{ 'form.confirmPassword' | translate }}"></ion-input>
           </ion-item>
           <button margin-top ion-button type="submit" [disabled]="!registerData.valid">{{ 'button.submit' | translate }}</button>
 

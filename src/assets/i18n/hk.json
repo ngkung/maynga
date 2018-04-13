@@ -2,7 +2,7 @@
   "label": {
     "email": "電郵地址",
     "password": "密碼",
-    "name": "姓名",
+    "name": "家長姓名",
     "confirm_password" : "確認密碼",
     "title" : "稱謂",
     "author_name": "作者",
@@ -11,6 +11,14 @@
     "initLogin": "啟動帳號",
     "initPassword": "啟動密碼",
     "confirmPassword": "確認密碼"
+  },
+  "form":{
+    "initLogin": "[參考學校提供]",
+    "initPassword": "[參考學校提供]",
+    "email": "[電郵只能登記一次]",
+    "name": "[登記名稱至少六個字母]",
+    "password": "[至少六個字母]",
+    "confirmPassword": "[必需與密碼相同]"
   },
   "student": {
     "name": "英文名稱",

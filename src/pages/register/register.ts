@@ -3,6 +3,7 @@ import {IonicPage, NavController, NavParams, MenuController} from 'ionic-angular
 import {Storage} from '@ionic/storage';
 import {Validators, FormBuilder, FormGroup} from '@angular/forms';
 import {AuthService} from "../../providers/authService";
+import {AlertController} from "ionic-angular";
 
 
 /**
@@ -27,12 +28,14 @@ export class RegisterPage {
         public menuCtrl: MenuController,
         public storage: Storage,
         public formBuilder: FormBuilder,
+        public alertCtrl: AlertController,
         public authService: AuthService) {
 
         this.registerData = this.formBuilder.group({
             initLogin: ['', Validators.compose([Validators.required])],
             initPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-            email: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+            email: ['', Validators.compose([Validators.required, Validators.minLength(6),Validators.email])],
+            name: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
             password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
             confirmPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
         });
@@ -40,9 +43,31 @@ export class RegisterPage {
     }
 
     register() {
-        this.authService.forgot(this.registerData.value)
-            .then(() => this.redirectToHome())
-            .catch(e => console.log("forgot me error", e));
+        if (this.registerData.getRawValue().password === this.registerData.getRawValue().confirmPassword) {
+            this.authService.register(this.registerData.value)
+                .then(() => {
+                    //this.redirectToHome()
+                    console.log("Returned");
+                })
+                .catch(e => {
+                    console.log("forgot me error", e)
+                });
+        } else {
+            this.registerData.controls['password'].setValue('');
+            this.registerData.controls['confirmPassword'].setValue('');
+            let alert = this.alertCtrl.create({title: '錯誤 Error', message: '密碼確認錯誤，請重新輸入! Please enter matched passwords again!', buttons: ['Dismiss']});
+            alert.present();
+        }
+        /*
+        this.authService.register(this.registerData.value)
+            .then(() => {
+                //this.redirectToHome()
+                console.log("Returned");
+            })
+            .catch(e => {
+                console.log("forgot me error", e)
+            });
+            */
     }
 
     ionViewDidLoad() {

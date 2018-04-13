@@ -3,7 +3,7 @@ export let cfg = {
     tokenName: 'token',
     photoPath: '/images/',
     user: {
-        register: '/auth/signup',
+        register: '/apiRegister',
         login: '/apilogin',
         refresh:'/apiRefreshToken',
         forgot: '/apiForgot'
