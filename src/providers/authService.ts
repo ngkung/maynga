@@ -256,17 +256,18 @@ export class AuthService {
     }
 
 
-    getLatestInfo(token) {
+    getLatestInfo() {
 
-        return this.http.post(this.cfg.apiUrl + "/api/getNotice",{},{}).toPromise()
+        return this.http.post(this.cfg.apiUrl + "/api/getApiContent",{},{}).toPromise()
             .then((data: any) => {
-                console.log(data);
+                //console.log(data);
+                return JSON.parse(data);
 
             })
             .catch(e => {
-                let alert = this.alertCtrl.create({title: 'Error', message: e.message, buttons: ['Dismiss']});
-                alert.present();
-                this.logout();
+                //let alert = this.alertCtrl.create({title: 'Error', message: e.message, buttons: ['Dismiss']});
+                //alert.present();
+                //this.logout();
                 console.log('getInfo error', JSON.stringify(e))
             });
     }

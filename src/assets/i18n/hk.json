@@ -49,6 +49,8 @@
     "forgotten_password" : "Password recovery",
     "profile" : "用戶檔案",
     "record": "檢視學生檔案",
+    "notices": "學校通告",
+    "urgents": "緊急通知",
     "books" : {
       "list" : "My books",
       "add": "Add book",
@@ -57,8 +59,9 @@
     }
   },
   "homeItem": {
-    "notice": "Notice",
-    "urgent": "Urgent"
+    "notice": "學校通告",
+    "urgent": "緊急通知",
+    "loading": "下載資料，請稍等 ..."
   },
   "SchoolRecord": {
     "SchoolRecord": "上學記錄(最近十次)",

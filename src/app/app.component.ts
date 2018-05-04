@@ -50,8 +50,9 @@ export class MyApp {
         // Okay, so the platform is ready and our plugins are available.
         // Here you can do any higher level native things you might need.
 
-          this.fcm.subscribeToTopic('marketing');
           /*
+          this.fcm.subscribeToTopic('marketing');
+
           //https://javebratt.com/ionic-push-notification/
           //https://ionicframework.com/docs/native/fcm/
           //https://cordova-plugin-fcm.appspot.com/
@@ -75,11 +76,11 @@ export class MyApp {
             });
 
             this.fcm.onTokenRefresh().subscribe(token => {
-              backend.registerToken(token);
+              //backend.registerToken(token);
             });
 
         this.fcm.unsubscribeFromTopic('marketing');
-          */
+        */
         this.statusBar.styleDefault();
         this.splashScreen.hide();
         this.authService.startupTokenRefresh();

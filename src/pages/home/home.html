@@ -10,7 +10,7 @@
 <ion-content padding class="home-page">
   <ion-img src="assets/imgs/logo.png" class="home-logo"></ion-img>
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+    <button ion-item *ngFor="let item of items" (click)="itemTapped(item)">
       <ion-icon [name]="item.icon" item-start></ion-icon>
       {{ item.title | translate }}
       <div class="item-note" item-end>

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angul
 import {Storage} from '@ionic/storage';
 import {StudentModel, UserModel} from '../../models/user.model';
 import {AuthService} from "../../providers/authService";
+import {NoticesPage} from "../notices/notices";
 
 @IonicPage()
 @Component({
@@ -14,6 +15,8 @@ export class HomePage {
     public user: UserModel;
     public students: Array<StudentModel>;
     public message: any;
+    public notices: any;
+    public urgents: any;
     selectedItem: any;
     icons: string[];
     items: Array<{title: string, note: string, icon: string}>;
@@ -30,10 +33,14 @@ export class HomePage {
         this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
             'american-football', 'boat', 'bluetooth', 'build'];
 
+        /*
         this.items = [
             {title: 'homeItem.notice', note: '', icon: 'notifications'},
             {title: 'homeItem.urgent', note: '', icon: 'warning'}
         ];
+        */
+
+        this.items = [{title: 'homeItem.urgent', note: '', icon: 'loading'}];
 
         this.storage.get('students').then(students => {
             this.students = students;
@@ -65,19 +72,54 @@ export class HomePage {
                 //this.getLatestInfo(id_token);
             }
         });
+        this.getLatestInfo();
         this.menuCtrl.enable(true);
     }
 
-    itemTapped(event, item) {
+    itemTapped(item) {
         // That's right, we're pushing to ourselves!
+        /*
         this.navCtrl.push(HomePage, {
             item: item
         });
+        */
+
+        if (item.title == 'homeItem.notice') {
+            //console.log(this.notices);
+            this.navCtrl.push('NoticesPage', {
+                notices: this.notices
+            });
+        } else if (item.title == 'homeItem.urgent') {
+            //console.log(this.urgents);
+        }
     }
 
-    getLatestInfo(token) {
-        console.log("calling at a time");
-        this.authService.getLatestInfo(token);
+    getLatestInfo() {
+        console.log("trying to get info now");
+        this.authService.getLatestInfo().then( data => {
+                //console.log(JSON.parse(data));
+                this.items = [];
+                let notices = [];
+                let urgents = [];
+                for (let key in data) {
+                    if (data[key].contentType == "notice") {
+                        notices.push(data[key].blobJson);
+                    } else if (data[key].contentType == 'urgent') {
+                        urgents.push(data[key].blobJson);
+                    }
+                }
+
+                if (notices.length > 0) {
+                    this.notices = notices;
+                    this.items.push({title: 'homeItem.notice', note: '', icon: 'notifications'});
+                }
+
+                if (urgents.length > 0) {
+                    this.urgents = urgents;
+                    this.items.push({title: 'homeItem.urgent', note: '', icon: 'warning'});
+                }
+            }
+        );
     }
 
 

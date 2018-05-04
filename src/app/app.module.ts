@@ -72,7 +72,7 @@ export function getAuthHttp(http) {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
       ComponentsModule,
-      FCM
+      FCM,
   ]
 })
 export class AppModule {}
