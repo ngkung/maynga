@@ -3,7 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { NoticesPage } from './notices';
 import {TranslateModule} from "@ngx-translate/core";
 import {ComponentsModule} from "../../components/components.module";
-import { FileOpener } from "@ionic-native/file-opener";
+import {DocumentViewer} from "@ionic-native/document-viewer";
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { FileOpener } from "@ionic-native/file-opener";
       ComponentsModule,
   ],
     providers: [
-        FileOpener,
+        DocumentViewer
     ],
     exports:[
         ComponentsModule,

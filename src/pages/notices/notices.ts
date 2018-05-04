@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController} from 'ionic-angular';
-import { FileOpener } from "@ionic-native/file-opener";
+import { DocumentViewer, DocumentViewerOptions } from '@ionic-native/document-viewer';
 
 /**
  * Generated class for the NoticesPage page.
@@ -14,13 +14,18 @@ import { FileOpener } from "@ionic-native/file-opener";
   selector: 'page-notices',
   templateUrl: 'notices.html',
 })
+
+
 export class NoticesPage {
   notices: any;
+    options: DocumentViewerOptions = {
+        title: '通告'
+    }
 
   constructor(
       public navCtrl: NavController,
       public menuCtrl: MenuController,
-      public fileOpener: FileOpener,
+      public document: DocumentViewer,
       public navParams: NavParams) {
 
       this.notices = this.navParams.get('notices');
@@ -42,8 +47,9 @@ export class NoticesPage {
 
   openFile(link) {
       console.log("Someone touch me!");
-      this.fileOpener.open(link, 'application/pdf')
-          .then(() => console.log('File is opened'))
-          .catch(e => console.log('Error opening file', e));
+      this.document.viewDocument(link, 'application/pdf', this.options);
+
   }
 }
+
+
