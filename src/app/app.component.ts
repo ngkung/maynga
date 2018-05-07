@@ -36,6 +36,7 @@ export class MyApp {
         this.pages = [
             {title: 'page.home', component: 'HomePage'},
             {title: 'page.profile', component: 'ProfilePage'},
+            {title: 'page.albums', component: 'AlbumsPage'},
             {title: 'page.logout', component: 'LoginPage', method: 'logout'}
         ];
 
@@ -81,6 +82,8 @@ export class MyApp {
 
         this.fcm.unsubscribeFromTopic('marketing');
         */
+
+
         this.statusBar.styleDefault();
         this.splashScreen.hide();
         this.authService.startupTokenRefresh();

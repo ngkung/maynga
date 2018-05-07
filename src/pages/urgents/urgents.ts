@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController} from 'ionic-angular';
 
 /**
  * Generated class for the UrgentsPage page.
@@ -15,11 +15,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class UrgentsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  urgents: any;
+
+  constructor(
+      public navCtrl: NavController,
+      public menuCtrl: MenuController,
+      public navParams: NavParams) {
+
+      this.urgents = this.navParams.get('urgents');
+      if (this.urgents != null) {
+          console.log(this.urgents);
+          if (this.urgents.length > 0) {
+          }
+      } else {
+          this.navCtrl.setRoot('HomePage');
+      }
+
+      console.log(this.urgents);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad UrgentsPage');
+      this.menuCtrl.enable(false);
   }
 
 }

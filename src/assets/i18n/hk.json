@@ -47,10 +47,11 @@
     "logout" : "登出",
     "register" : "登記新用戶",
     "forgotten_password" : "Password recovery",
-    "profile" : "用戶檔案",
+    "profile" : "家長/學生檔案",
     "record": "檢視學生檔案",
     "notices": "學校通告",
     "urgents": "緊急通知",
+    "albums": "校園圖輯",
     "books" : {
       "list" : "My books",
       "add": "Add book",
