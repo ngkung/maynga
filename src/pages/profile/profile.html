@@ -16,7 +16,7 @@
 
 </ion-header>
 <ion-content padding class="home-page">
-  <ion-card *ngIf="user">
+  <ion-item *ngIf="user">
     <ion-row>
       <ion-col col-25>{{ 'label.name' | translate }}:</ion-col>
       <ion-col col-75>{{ user.name }}</ion-col>
@@ -25,7 +25,7 @@
       <ion-col col-25>{{ 'label.email' | translate }}:</ion-col>
       <ion-col col-75>{{ user.email }}</ion-col>
     </ion-row>
-  </ion-card>
+  </ion-item>
   <ion-list>
     <ion-card ion-item *ngFor="let student of students; let i = index" style="margin-top: 10px" no-lines>
       <ion-row>

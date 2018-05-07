@@ -14,6 +14,7 @@ export class LoginPage {
 
     private loginData: FormGroup;
     public user: UserModel;
+    public email: any;
 
     constructor(
         public navCtrl: NavController,
@@ -23,19 +24,34 @@ export class LoginPage {
         public formBuilder: FormBuilder,
         public authService: AuthService) {
 
+        this.user = new UserModel();
+
+
+        this.loginData = this.formBuilder.group({
+            email: ['', Validators.compose([Validators.required])],
+            password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+        });
+
         this.storage.get('user').then(user => {
             this.user = user;
+            if (this.user != null) {
+                if (this.user.email != null) {
+                    this.email = this.user.email;
+                }
+            } else {
+                this.user = new UserModel();
+                this.user.email = "";
+            }
         });
 
 
-            this.loginData = this.formBuilder.group({
-                email: ['', Validators.compose([Validators.required])],
-                password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-            });
+
+
 
     }
 
     ionViewDidLoad() {
+
         //hide menu when on the login page, regardless of the screen resolution
         console.log("login page");
         this.menuCtrl.enable(false);
@@ -57,6 +73,12 @@ export class LoginPage {
         console.log("Redirecting");
         this.navCtrl.setRoot('HomePage');
         this.menuCtrl.enable(true);
+    }
+
+    clearAll() {
+        this.storage.remove('user');
+        this.loginData.reset();
+        console.log("user removed!");
     }
 
     /**

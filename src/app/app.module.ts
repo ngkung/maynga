@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {AuthService} from '../providers/authService';
 import {ComponentsModule} from "../components/components.module";
+import {File} from "@ionic-native/file";
 import { FCM } from '@ionic-native/fcm';
 
 let storage = new Storage({});
@@ -73,6 +74,7 @@ export function getAuthHttp(http) {
     AuthService,
       ComponentsModule,
       FCM,
+      File,
   ]
 })
 export class AppModule {}

@@ -24,6 +24,7 @@
     "@ionic-native/core": "4.4.0",
     "@ionic-native/document-viewer": "^4.7.0",
     "@ionic-native/fcm": "^4.7.0",
+    "@ionic-native/file": "^4.7.0",
     "@ionic-native/file-opener": "^4.7.0",
     "@ionic-native/splash-screen": "4.4.0",
     "@ionic-native/status-bar": "4.4.0",
@@ -37,6 +38,7 @@
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-document-viewer": "^0.9.9",
     "cordova-plugin-fcm": "^2.1.2",
+    "cordova-plugin-file": "^6.0.1",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-statusbar": "^2.4.2",
@@ -60,7 +62,8 @@
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-fcm": {},
-      "cordova-plugin-document-viewer": {}
+      "cordova-plugin-document-viewer": {},
+      "cordova-plugin-file": {}
     },
     "platforms": [
       "ios",

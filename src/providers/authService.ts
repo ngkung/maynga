@@ -124,8 +124,8 @@ export class AuthService {
     logout() {
         // stop function of auto refesh
         this.unscheduleRefresh();
-        this.storage.remove('user');
-        console.log("user removed!");
+        //this.storage.remove('user');
+        //console.log("user removed!");
         this.storage.remove('id_token');
         console.log("id_token removed!");
         this.events.publish("id_token_removed!");

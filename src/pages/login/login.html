@@ -15,13 +15,14 @@
         <form [formGroup]="loginData" (ngSubmit)="login()"  *ngIf="!showRoleSelection">
           <ion-item class="form-item-row">
             <ion-label floating>{{ 'label.email' | translate }}:</ion-label>
-            <ion-input type="email" formControlName="email"></ion-input>
+            <ion-input type="email" formControlName="email" value="{{ user.email }}"></ion-input>
           </ion-item>
           <ion-item class="form-item-row">
             <ion-label floating>{{ 'label.password' | translate }}:</ion-label>
             <ion-input type="password" formControlName="password"></ion-input>
           </ion-item>
           <button margin-top ion-button type="submit" [disabled]="!loginData.valid">{{ 'button.login' | translate }}</button>
+          <button margin-top ion-button type="button" color="dark" [outline]="true" (click)="clearAll()">{{ 'button.clear' | translate }}</button>
         </form>
         <ion-row padding-top>
           <ion-col>

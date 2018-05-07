@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {AuthService} from "../../providers/authService";
-import {AlbumDetailsPage} from "../album-details/album-details";
 
 /**
  * Generated class for the AlbumsPage page.

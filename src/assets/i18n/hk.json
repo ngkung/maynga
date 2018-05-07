@@ -38,7 +38,8 @@
     "submit" : "遞交",
     "add_book": "Add new book",
     "edit": "修改",
-    "delete": "刪除"
+    "delete": "刪除",
+    "clear":"清除"
   },
   "page" : {
     "homeTitle" : "美雅教育機構",
