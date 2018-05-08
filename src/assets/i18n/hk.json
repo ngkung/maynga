@@ -12,6 +12,22 @@
     "initPassword": "啟動密碼",
     "confirmPassword": "確認密碼"
   },
+  "register": {
+    "ACTIVATION_ERROR": "帳戶名稱或密碼錯誤！",
+    "ALREADY_ACTIVATED": "帳戶經已被啟動",
+    "EMAIL_REGISTERED": "電郵已被登記",
+    "WAIT_FOR_EMAIL": "請查看確認電郵",
+    "failed": "帳戶啟動失敗",
+    "success": "帳戶成功啟動",
+    "status": "狀況",
+    "active": "正常",
+    "verifying": "啟動中，請查看電郵。",
+    "notyetactivate": "還未啟動",
+    "suspended": "被暫停",
+    "expired": "已過期",
+    "CANNOT_SAVE": "存檔失敗",
+    "return": "返回"
+  },
   "form":{
     "initLogin": "[參考學校提供]",
     "initPassword": "[參考學校提供]",

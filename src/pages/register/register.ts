@@ -4,6 +4,8 @@ import {Storage} from '@ionic/storage';
 import {Validators, FormBuilder, FormGroup} from '@angular/forms';
 import {AuthService} from "../../providers/authService";
 import {AlertController} from "ionic-angular";
+import { TranslateService } from '@ngx-translate/core';
+
 
 
 /**
@@ -29,6 +31,7 @@ export class RegisterPage {
         public storage: Storage,
         public formBuilder: FormBuilder,
         public alertCtrl: AlertController,
+        public translate: TranslateService,
         public authService: AuthService) {
 
         this.registerData = this.formBuilder.group({
@@ -45,9 +48,23 @@ export class RegisterPage {
     register() {
         if (this.registerData.getRawValue().password === this.registerData.getRawValue().confirmPassword) {
             this.authService.register(this.registerData.value)
-                .then(() => {
+                .then((data) => {
                     //this.redirectToHome()
-                    console.log("Returned");
+                    let title = this.translate.instant("register."+data['status']);
+                    let message = this.translate.instant("register."+data['message']);
+                    let butName = this.translate.instant("register.return");
+                    let alert = this.alertCtrl.create({title: title, message: message, buttons: [butName]});
+                    alert.present();
+
+                    if (data['status'] == "failed") {
+                        console.log("register failed: " + data['message']);
+
+                    } else if (data['status'] == "success"){
+                        console.log("register success");
+                        this.redirectToHome();
+
+                    }
+
                 })
                 .catch(e => {
                     console.log("forgot me error", e)

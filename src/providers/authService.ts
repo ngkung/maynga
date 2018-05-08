@@ -57,7 +57,8 @@ export class AuthService {
         return this.http.post(this.cfg.apiUrl + this.cfg.user.register, myData, { responseType: "json"})
             .toPromise()
             .then((data: any) => {
-                console.log(data);
+                //console.log(data);
+                return data;
                 //let rs = data.json();
                 /*
                 this.saveData(data);
