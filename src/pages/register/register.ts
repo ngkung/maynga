@@ -5,8 +5,7 @@ import {Validators, FormBuilder, FormGroup} from '@angular/forms';
 import {AuthService} from "../../providers/authService";
 import {AlertController} from "ionic-angular";
 import { TranslateService } from '@ngx-translate/core';
-
-
+import { LoadingController } from "ionic-angular";
 
 /**
  * Generated class for the RegisterPage page.
@@ -32,6 +31,7 @@ export class RegisterPage {
         public formBuilder: FormBuilder,
         public alertCtrl: AlertController,
         public translate: TranslateService,
+        public loadingCtrl: LoadingController,
         public authService: AuthService) {
 
         this.registerData = this.formBuilder.group({
@@ -46,10 +46,17 @@ export class RegisterPage {
     }
 
     register() {
+        let loadingMsg = this.translate.instant("register.loading");
+        let loading = this.loadingCtrl.create({
+            content: loadingMsg
+        });
+
+        loading.present();
         if (this.registerData.getRawValue().password === this.registerData.getRawValue().confirmPassword) {
             this.authService.register(this.registerData.value)
                 .then((data) => {
                     //this.redirectToHome()
+                    loading.dismissAll();
                     let title = this.translate.instant("register."+data['status']);
                     let message = this.translate.instant("register."+data['message']);
                     let butName = this.translate.instant("register.return");
@@ -62,11 +69,11 @@ export class RegisterPage {
                     } else if (data['status'] == "success"){
                         console.log("register success");
                         this.redirectToHome();
-
                     }
 
                 })
                 .catch(e => {
+                    loading.dismissAll();
                     console.log("forgot me error", e)
                 });
         } else {

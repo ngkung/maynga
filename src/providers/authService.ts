@@ -81,11 +81,17 @@ export class AuthService {
                 let alert = this.alertCtrl.create({title: 'Login', message: JSON.stringify(data), buttons: ['Dismiss']});
                 alert.present();
                 */
-                console.log("URL: "+ this.cfg.apiUrl + this.cfg.user.login)
-                console.log(data);
-                this.saveData(data);
-                this.idToken = data.token;
-                this.scheduleRefresh();
+                if ((data['status'] == "fail") || (data['status'] == "failed")) {
+                    console.log("I am in error!");
+                } else {
+                    console.log("URL: "+ this.cfg.apiUrl + this.cfg.user.login)
+                    console.log(data);
+                    this.saveData(data);
+                    this.idToken = data.token;
+                    this.scheduleRefresh();
+                }
+                return data;
+
             })
             .catch(e => {
                 let alert = this.alertCtrl.create({title: 'Error', message: e.message, buttons: ['Dismiss']});

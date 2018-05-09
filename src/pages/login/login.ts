@@ -4,6 +4,8 @@ import {Storage} from '@ionic/storage';
 import {Validators, FormBuilder, FormGroup} from '@angular/forms';
 import {AuthService} from "../../providers/authService";
 import {UserModel} from '../../models/user.model';
+import {AlertController} from "ionic-angular";
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
 @Component({
@@ -22,6 +24,8 @@ export class LoginPage {
         public menuCtrl: MenuController,
         public storage: Storage,
         public formBuilder: FormBuilder,
+        public alertCtrl: AlertController,
+        public translate: TranslateService,
         public authService: AuthService) {
 
         this.user = new UserModel();
@@ -60,13 +64,28 @@ export class LoginPage {
     login() {
         //use this.loginData.value to authenticate the user
         this.authService.login(this.loginData.value)
-            .then(() => this.redirectToHome())
+            .then((data) => {
+                    if (data['status'] == "success") {
+                        this.redirectToHome();
+                    } else {
+                        if (!(typeof data['message'] === 'undefined')) {
+                                let title = this.translate.instant("login.title");
+                                let message = this.translate.instant("login."+data['message']);
+                                let butName = this.translate.instant("login.return");
+                                let alert = this.alertCtrl.create({title: title, message: message, buttons: [butName]});
+                                alert.present();
+                        }
+
+                        this.clearAll();
+                        this.logout();
+                    }
+            })
             .catch(e => console.log("login error", e));
     }
 
     logout() {
         console.log("calling from me logout");
-        //this.authService.logout();
+        this.authService.logout();
     }
 
     redirectToHome() {

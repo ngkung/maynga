@@ -36,7 +36,10 @@ export class ForgotPage {
 
     forgot() {
         this.authService.forgot(this.forgotData.value)
-            .then(() => this.redirectToHome())
+            .then((data) => {
+                console.log("Welcome good ");
+                this.redirectToHome();
+            })
             .catch(e => console.log("forgot me error", e));
     }
 
