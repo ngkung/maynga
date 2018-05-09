@@ -106,7 +106,8 @@ export class AuthService {
         return this.http.post(this.cfg.apiUrl + this.cfg.user.forgot, JSON.stringify(credentials), { responseType: "json"})
             .toPromise()
             .then((data: any) => {
-                console.log(data);
+                //console.log(data);
+                return data;
                 /*
                 this.saveData(data);
                 this.idToken = data.token;

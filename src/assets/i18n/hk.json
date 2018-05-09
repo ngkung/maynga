@@ -36,6 +36,13 @@
     "return": "返回",
     "loading": "處理中，請稍候 ..."
   },
+  "forget": {
+    "title_success": "成功重設密碼！",
+    "title_failed": "密碼重設失敗！",
+    "CANNOT_RESET": "系統無法重設密碼。",
+    "MAIL_SEND": "請檢查電郵",
+    "NOT_FOUND": "沒有該登記電郵"
+  },
   "form":{
     "initLogin": "[參考學校提供]",
     "initPassword": "[參考學校提供]",

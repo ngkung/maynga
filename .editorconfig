@@ -24,3 +24,7 @@ trim_trailing_whitespace = false
 
 #cordova plugin remove cordova-plugin-ionic-webview
 # ionic cordova plugin rm cordova-plugin-WKWebView-engine
+
+
+# platforms/android/src/google-services.json
+# platforms/android/src/debug/google-services.json
