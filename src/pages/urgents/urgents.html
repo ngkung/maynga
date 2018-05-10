@@ -11,8 +11,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <img src="assets/imgs/logo.png" class="header-logo">
-
-    <ion-title>{{ 'page.urgents' | translate }}</ion-title>
+    <ion-title style="margin-top: 5px; margin-left: 5px;">{{ 'page.urgents' | translate }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -21,7 +20,7 @@
 <ion-content padding class="home-page">
   <ion-item-sliding no-lines="true" *ngFor="let item of urgents; let i=index" detail-push style="color: dark; margin-bottom: 15px; border-radius: 15px; ">
     <ion-item no-lines="true" style="color: red; margin-bottom: 15px; border-radius: 15px; background: rgba(255,255,255,0.7); ">
-      <h2>{{ i+1 }}. {{ item.title }}</h2>
+      <h2 style="line-height: 35px;">{{ i+1 }}. {{ item.title }}</h2>
       <p><strong>{{ item.text }}</strong></p>
       <small>日期：{{ item.publishDate }}</small>
     </ion-item>

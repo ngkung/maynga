@@ -12,12 +12,12 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <img src="assets/imgs/logo.png" class="header-logo">
-    <ion-title>{{ 'page.profile' | translate }}</ion-title>
+    <ion-title style="margin-top: 5px; margin-left: 5px;">{{ 'page.profile' | translate }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 <ion-content padding class="home-page">
-  <ion-item *ngIf="user">
+  <ion-item *ngIf="user" no-lines="true" style="margin-bottom: 15px; border-radius: 15px; background: rgba(255,255,255,0.7); ">
     <ion-row>
       <ion-col col-25>{{ 'label.name' | translate }}:</ion-col>
       <ion-col col-75>{{ user.name }}</ion-col>
@@ -26,12 +26,17 @@
       <ion-col col-25>{{ 'label.email' | translate }}:</ion-col>
       <ion-col col-75>{{ user.email }}</ion-col>
     </ion-row>
+    <!--
+    <ion-row>
+      <button ion-button [full]="true" style=" border-radius: 15px;">{{ 'login.changePassword' | translate }}</button>
+    </ion-row>
+    -->
   </ion-item>
   <ion-list>
-    <ion-card ion-item *ngFor="let student of students; let i = index" style="margin-top: 10px" no-lines>
+    <ion-card ion-item *ngFor="let student of students; let i = index" no-lines  style="margin-top: 10px; margin-bottom: 15px; border-radius: 15px; background: rgba(255,255,255,0.7); ">
       <ion-row>
         <div col-4>
-          <ion-img src="http://maynga01.no-ip.org:8008/images/{{ student.school }}/{{ student.photo }}" class="studentPhoto" style="height: 100%; width: 100%; max-height: 170px; max-width: 120px; background: #fff"></ion-img>
+          <ion-img src="http://maynga01.no-ip.org:8008/images/{{ student.school }}/{{ student.photo }}" class="studentPhoto" style="height: 100%; width: 100%; max-height: 170px; max-width: 120px; background: none;"></ion-img>
         </div>
         <div col-8>
           <ion-row>

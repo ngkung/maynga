@@ -17,7 +17,8 @@
     "NON_ACTIVE": "帳戶尚未完成啟動，請查看電郵或重新啟動帳號。",
     "NO_USER": "沒有相關用戶登記資料。",
     "NOT_VALID": "密碼不正確",
-    "return": "返回"
+    "return": "返回",
+    "changePassword": "更改密碼"
   },
   "register": {
     "ACTIVATION_ERROR": "帳戶名稱或密碼錯誤！",
