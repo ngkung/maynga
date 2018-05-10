@@ -73,12 +73,13 @@
     "clear":"清除"
   },
   "page" : {
+    "menu": "菜單",
     "homeTitle" : "美雅教育機構",
     "home" : "主頁",
-    "login" : "登入",
+    "login" : "美雅教育機構: 家長登入",
     "logout" : "登出",
     "register" : "登記新用戶",
-    "forgotten_password" : "Password recovery",
+    "forgotten_password" : "忘記密碼",
     "profile" : "家長/學生檔案",
     "record": "檢視學生檔案",
     "notices": "學校通告",

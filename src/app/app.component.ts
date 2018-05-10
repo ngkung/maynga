@@ -15,7 +15,7 @@ export class MyApp {
 
     rootPage: any = 'HomePage';
 
-    pages: Array<{title: string, component: any, method?: any}>;
+    pages: Array<{title: string, icon: string, component: any, method?: any}>;
 
 
     constructor(
@@ -34,10 +34,10 @@ export class MyApp {
       // used for an example of ngFor and navigation
 
         this.pages = [
-            {title: 'page.home', component: 'HomePage'},
-            {title: 'page.profile', component: 'ProfilePage'},
-            {title: 'page.albums', component: 'AlbumsPage'},
-            {title: 'page.logout', component: 'LoginPage', method: 'logout'}
+            {title: 'page.home', icon: 'home',component: 'HomePage'},
+            {title: 'page.profile', icon: 'people', component: 'ProfilePage'},
+            {title: 'page.albums', icon: 'albums', component: 'AlbumsPage'},
+            {title: 'page.logout', icon: 'log-out', component: 'LoginPage', method: 'logout'}
         ];
 
         events.subscribe('id_token_removed!', () => {

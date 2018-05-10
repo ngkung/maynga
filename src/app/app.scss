@@ -22,6 +22,12 @@
   display: block;
 }
 
+.header-logo {
+  width: 50px;
+  height: 50px;
+  margin-left: 30px;
+}
+
 .home-page {
   background: lightskyblue;
 }
@@ -31,7 +37,7 @@
 }
 
 .form-item-row {
-  background: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.7);
 }
 
 .studentPhoto {

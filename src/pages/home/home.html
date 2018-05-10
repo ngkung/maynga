@@ -3,15 +3,19 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{ 'page.homeTitle' | translate }}</ion-title>
+    <img src="assets/imgs/logo.png" class="header-logo">
+
+    <ion-title>
+      {{ 'page.homeTitle' | translate }}
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="home-page">
   <ion-img src="assets/imgs/logo.png" class="home-logo"></ion-img>
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped(item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
+    <button ion-item no-lines="true" *ngFor="let item of items" (click)="itemTapped(item)" style="margin-bottom: 15px; border-radius: 15px; background: rgba(255,255,255,0.7); ">
+      <ion-icon [name]="item.icon" item-start style="margin-bottom: 15px; border-radius: 15px;"></ion-icon>
       {{ item.title | translate }}
       <div class="item-note" item-end>
         {{item.note}}

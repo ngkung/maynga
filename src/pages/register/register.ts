@@ -46,13 +46,13 @@ export class RegisterPage {
     }
 
     register() {
-        let loadingMsg = this.translate.instant("register.loading");
-        let loading = this.loadingCtrl.create({
-            content: loadingMsg
-        });
-
-        loading.present();
         if (this.registerData.getRawValue().password === this.registerData.getRawValue().confirmPassword) {
+            let loadingMsg = this.translate.instant("register.loading");
+            let loading = this.loadingCtrl.create({
+                content: loadingMsg
+            });
+
+            loading.present();
             this.authService.register(this.registerData.value)
                 .then((data) => {
                     //this.redirectToHome()

@@ -1,23 +1,24 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ 'page.login' | translate }}</ion-title>
+    <img src="assets/imgs/logo.png" class="header-logo">
+    <ion-title style="line-height: 100px;">{{ 'page.login' | translate }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding class="home-page">
-  <ion-img src="assets/imgs/logo.png" class="home-logo"></ion-img>
   <ion-grid>
+    <ion-img src="assets/imgs/logo.png" class="home-logo"></ion-img>
     <ion-row justify-content-around>
       <ion-col col-sm-6 col-md-6 col-lg-4 col-xl-3  align-self-center>
         <form [formGroup]="loginData" (ngSubmit)="login()"  *ngIf="!showRoleSelection">
-          <ion-item class="form-item-row">
+          <ion-item class="form-item-row"  style="padding: 15px; border-top-left-radius: 15px; border-top-right-radius: 15px; border-top: 3px white solid;">
             <ion-label floating>{{ 'label.email' | translate }}:</ion-label>
             <ion-input type="email" formControlName="email" value="{{ user.email }}"></ion-input>
           </ion-item>
-          <ion-item class="form-item-row">
+          <ion-item class="form-item-row" style="padding: 15px; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;border-bottom: 3px white solid;">
             <ion-label floating>{{ 'label.password' | translate }}:</ion-label>
             <ion-input type="password" formControlName="password"></ion-input>
           </ion-item>

@@ -10,6 +10,8 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+    <img src="assets/imgs/logo.png" class="header-logo">
+
     <ion-title>{{ 'page.albums' | translate }}</ion-title>
   </ion-navbar>
 
@@ -17,11 +19,11 @@
 
 <ion-content padding class="home-page">
   <ion-item-sliding *ngFor="let album of albums; let i=index" #item>
-    <ion-item color="white" no-lines="true" style="color: red;margin-bottom: 3px;" class="item item-text-wrap" detail-push (click)="showDetails(album)">
-      <ion-avatar item-start>
+    <ion-item no-lines="true" detail-push (click)="showDetails(album)"  style="color: dark; margin-bottom: 15px; border-radius: 15px; background: rgba(255,255,255,0.7); ">
+      <ion-avatar item-start  style="margin-bottom: 15px; margin-top: 15px;">
         <img src="http://maynga01.no-ip.org:8008/images/albums/{{ album.id }}/{{album.photos[1]}}">
       </ion-avatar>
-      <p class="item item-text-wrap">{{ album.title }}</p>
+      <p style="color: #333333; text-wrap: normal">{{ album.title }}</p>
 
     </ion-item>
   </ion-item-sliding>
